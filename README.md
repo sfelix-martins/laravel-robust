@@ -25,4 +25,18 @@ $ git clone
 $ composer install
 ```
 
+- Migrate database changes
+
+```console
+$ php artisan migrate
+```
+
+- Install `Laravel Passport` to get credentials
+
+```console
+$ php artisan passport:install
+```
+
+Get the generate credentials to use on API authentication
+
 # To be continued...
