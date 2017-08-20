@@ -182,7 +182,7 @@ return [
          * Added Service Providers...
          */
         Nwidart\Modules\LaravelModulesServiceProvider::class,
-
+        Barryvdh\Cors\ServiceProvider::class,
     ],
 
     /*
