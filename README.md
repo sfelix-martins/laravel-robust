@@ -1,6 +1,6 @@
 # Robust
 
-Laravel Project with many tools preinstalled and pre-set to build **Robust** applications
+Laravel Project with many tools preinstalled and pre-set to build **Robust** APIs
 
 ## Packages
 
