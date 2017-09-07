@@ -4,7 +4,8 @@ namespace Modules\User\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
+use Modules\User\Entities\User;
 
 class UserController extends Controller
 {
@@ -39,9 +40,13 @@ class UserController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('user::show');
+        $user = User::findOrFail($id);
+
+        $this->authorize('users.view', $user->id);
+        
+        // return view('user::show');
     }
 
     /**

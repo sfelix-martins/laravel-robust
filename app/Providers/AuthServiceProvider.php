@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Modules\User\Entities\User;
+use Carbon\Carbon;
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -27,5 +29,13 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
+
+        // Passport::tokensExpireIn(Carbon::now()->addMinutes(1));
+
+        // Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(2));
+        
+        Gate::define('users.view', function ($user, $id) {
+            return $user->id == $id;
+        });
     }
 }

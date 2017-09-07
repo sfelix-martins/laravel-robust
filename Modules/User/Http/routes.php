@@ -4,6 +4,8 @@ Route::group(['middleware' => 'web', 'prefix' => 'user', 'namespace' => 'Modules
     Route::get('/', 'UserController@index');
 });
 
-Route::group(['middleware' => 'api', 'prefix' => 'v1', 'namespace' => 'Modules\User\Http\Controllers'], function() {
-    //
+// Api v1
+Route::group(['middleware' => 'api', 'prefix' => 'v1/users', 'namespace' => 'Modules\User\Http\Controllers'], function() {
+    Route::post('/', 'Auth\RegisterController@register');
+    Route::get('/{id}', 'UserController@show');
 });

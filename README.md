@@ -10,13 +10,15 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
 - [Laravel Socialite](https://github.com/laravel/socialite)
 - [Laravel Social-Grant](https://github.com/adaojunior/passport-social-grant)
 - [Laravel Permissions](https://github.com/spatie/laravel-permission)
+- [Lassehaslev/Executor](https://github.com/LasseHaslev/executor)
+- [Json Exception Handler](https://github.com/sfelix-martins/json-exception-handler)
 
 ## Using
 
 - Clone the project
 
 ```console
-$ git clone 
+$ git clone https://github.com/sfelix-martins/laravel-robust.git
 ```
 
 - Install composer packages
@@ -39,4 +41,12 @@ $ php artisan passport:install
 
 Get the generate credentials to use on API authentication
 
-# To be continued...
+## Testing
+
+- Install npm dependencies and start automatic tests
+
+```console
+$ npm install
+
+$ npm run tdd
+```
