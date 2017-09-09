@@ -2,7 +2,11 @@
 
 Laravel Project with many tools preinstalled and pre-set to build **Robust** APIs
 
-## Packages
+## Features
+
+- OAuth 2 Authentication with Social Login support
+
+## Used Packages
 
 - [Laravel Modules](https://github.com/nWidart/laravel-modules)
 - [Laravel Cors](https://github.com/barryvdh/laravel-cors)
@@ -13,7 +17,7 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
 - [Lassehaslev/Executor](https://github.com/LasseHaslev/executor)
 - [Json Exception Handler](https://github.com/sfelix-martins/json-exception-handler)
 
-## Using
+## Installing
 
 - Clone the project
 

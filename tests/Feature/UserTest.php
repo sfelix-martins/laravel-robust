@@ -51,6 +51,14 @@ class UserTest extends TestCase
         $response->assertStatus(403)->assertJsonStructure(['code', 'message']);
     }
 
+    public function testGetUser()
+    {
+        Passport::actingAs($user = factory(User::class)->create());
+
+        $response = $this->json('GET', '/v1/users/'.$user->id);
+        $response->assertStatus(200);
+    }
+
     private function errorResponse($validation = false)
     {
         if ($validation) {

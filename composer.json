@@ -11,7 +11,7 @@
         "laravel/passport": "^3.0",
         "laravel/tinker": "~1.0",
         "nwidart/laravel-modules": "^2.0",
-        "sfelix-martins/json-exception-handler": "^0.5"
+        "sfelix-martins/json-exception-handler": "~0.5"
     },
     "require-dev": {
         "filp/whoops": "~2.0 ",

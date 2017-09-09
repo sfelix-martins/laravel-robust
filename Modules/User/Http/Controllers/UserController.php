@@ -45,7 +45,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $this->authorize('users.view', $user->id);
-        
+
         // return view('user::show');
     }
 

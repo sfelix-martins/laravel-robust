@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ed6c6eac94097a077622e61e3967fc3",
+    "content-hash": "f24606e59bb400b25440bf1078bc69c2",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -2005,16 +2005,16 @@
         },
         {
             "name": "sfelix-martins/json-exception-handler",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sfelix-martins/json-exception-handler.git",
-                "reference": "dc91ccb95e9140100dee3074846fefd663196fb9"
+                "reference": "be6f89690f510853afeaafa7eaba720fc8af269a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sfelix-martins/json-exception-handler/zipball/dc91ccb95e9140100dee3074846fefd663196fb9",
-                "reference": "dc91ccb95e9140100dee3074846fefd663196fb9",
+                "url": "https://api.github.com/repos/sfelix-martins/json-exception-handler/zipball/be6f89690f510853afeaafa7eaba720fc8af269a",
+                "reference": "be6f89690f510853afeaafa7eaba720fc8af269a",
                 "shasum": ""
             },
             "require": {
@@ -2051,7 +2051,7 @@
                 "json",
                 "laravel"
             ],
-            "time": "2017-09-04T01:57:22+00:00"
+            "time": "2017-09-08T00:11:28+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
