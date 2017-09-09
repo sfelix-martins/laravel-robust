@@ -1,0 +1,11 @@
+preset: laravel
+
+linting: true
+
+finder:
+  exclude:
+    - "public"
+    - "resources"
+    - "tests"
+  name:
+    - "*.php"
