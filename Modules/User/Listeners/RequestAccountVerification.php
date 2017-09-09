@@ -3,8 +3,6 @@
 namespace Modules\User\Listeners;
 
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class RequestAccountVerification
 {

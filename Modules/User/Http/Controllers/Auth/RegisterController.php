@@ -7,7 +7,6 @@ use Modules\User\Entities\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -83,7 +82,7 @@ class RegisterController extends Controller
         if ($request->expectsJson()) {
             return response()->json([
                 'message' => 'User created with success.',
-                'data' => $user
+                'data' => $user,
             ], 201);
         }
     }
