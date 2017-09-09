@@ -64,11 +64,11 @@ class UserServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
+            $sourcePath => $viewPath,
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/user';
+            return $path.'/modules/user';
         }, \Config::get('view.paths')), [$sourcePath]), 'user');
     }
 
@@ -84,7 +84,7 @@ class UserServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'user');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'user');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'user');
         }
     }
 
@@ -95,7 +95,7 @@ class UserServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/Database/factories');
+            app(Factory::class)->load(__DIR__.'/Database/factories');
         }
     }
 
