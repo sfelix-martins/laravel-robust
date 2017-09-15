@@ -12,9 +12,9 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
 
 ## Endpoints
 
-- `POST`: /v1/users - Create users
-- `POST`: /v1/oauth/token - Default login and Facebook Login
-- `GET`: /v1/users/{id} - Get one user
+- `POST`: /v1/users         - Create users
+- `POST`: /v1/oauth/token   - Default login and Facebook Login
+- `GET` : /v1/users/{id}    - Get one user
 
 More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRobustAPI/1.0.0)
 
@@ -34,7 +34,7 @@ More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRob
 - Clone the project
 
 ```console
-$ git clone https://github.com/sfelix-martins/laravel-robust.git
+$ composer create-project sfelix-martins/laravel-robust
 ```
 
 - Install composer packages
@@ -46,6 +46,7 @@ $ composer install
 - Migrate database changes
 
 ```console
+$ php artisan module:migrate
 $ php artisan migrate
 ```
 
