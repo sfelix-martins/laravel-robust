@@ -6,9 +6,6 @@ use Socialite;
 use Adaojunior\Passport\SocialGrantException;
 use Adaojunior\Passport\SocialUserResolverInterface;
 use Modules\User\Repositories\Contracts\UserRepositoryInterface as UserRepository;
-use Modules\User\Services\RegistersUsers;
-use Validator;
-use Illuminate\Validation\ValidationException;
 
 class SocialUserResolver implements SocialUserResolverInterface
 {
@@ -50,14 +47,14 @@ class SocialUserResolver implements SocialUserResolverInterface
 
         $facebookUser = $this->users->findByFacebookId($socialUser->getId());
 
-        if (!$facebookUser) {
+        if (! $facebookUser) {
             $defaultUser = $this->users->findByEmail($socialUser->getEmail());
 
-            if (!$defaultUser) {
+            if (! $defaultUser) {
                 return (new RegistersUsers($this->users))->register([
                     'name'          => $socialUser->getName(),
                     'email'         => $socialUser->getEmail(),
-                    'password'      => sha1($socialUser->getId() . date("d-m-Y h:i:s")),
+                    'password'      => sha1($socialUser->getId().date('d-m-Y h:i:s')),
                     'facebook_id'   => $socialUser->getId(),
                 ]);
             } else {
