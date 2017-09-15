@@ -7,7 +7,16 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
 
 ## Features
 
-- OAuth 2 Authentication with Social Login support
+- Register Users
+- OAuth 2 Authentication (Default and Facebook)
+
+## Endpoints
+
+- `POST`: /v1/users - Create users
+- `POST`: /v1/oauth/token - Default login and Facebook Login
+- `GET`: /v1/users/{id} - Get one user
+
+More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRobustAPI/1.0.0)
 
 ## Used Packages
 

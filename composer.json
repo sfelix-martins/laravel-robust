@@ -1,14 +1,16 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "sfelix-martins/laravel-robust",
+    "description": "Laravel Project with many tools pre installed and pre-set to build Robust APIs",
+    "keywords": ["robust", "api", "framework", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "adaojunior/passport-social-grant": "^3.1",
         "barryvdh/laravel-cors": "^0.9.2",
         "laravel/framework": "5.5.*",
         "laravel/passport": "^3.0",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "nwidart/laravel-modules": "^2.0",
         "sfelix-martins/json-exception-handler": "~0.5"

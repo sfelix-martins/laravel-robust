@@ -4,6 +4,8 @@ namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\User\Services\SocialUserResolver;
+use Adaojunior\Passport\SocialUserResolverInterface;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -34,7 +36,12 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(SocialUserResolverInterface::class, SocialUserResolver::class);
+
+        $this->app->bind(
+            'Modules\User\Repositories\Contracts\UserRepositoryInterface',
+            'Modules\User\Repositories\UserRepository'
+        );
     }
 
     /**
@@ -47,9 +54,7 @@ class UserServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Config/config.php' => config_path('user.php'),
         ], 'config');
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'user'
-        );
+        $this->mergeConfigFrom(__DIR__.'/../Config/config.php', 'user');
     }
 
     /**

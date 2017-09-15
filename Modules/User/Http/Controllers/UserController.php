@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\User\Entities\User;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class UserController extends Controller
 {
@@ -42,11 +43,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        // Sample to use JsonExceptionHandler validation
+        Validator::make(['id' => $id], ['id' => 'required|integer'])->validate();
+
         $user = User::findOrFail($id);
 
         $this->authorize('users.view', $user->id);
-
-        // return view('user::show');
     }
 
     /**
