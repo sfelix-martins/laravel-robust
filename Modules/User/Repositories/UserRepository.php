@@ -2,8 +2,8 @@
 
 namespace Modules\User\Repositories;
 
-use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 use Modules\User\Entities\User;
+use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
 {
