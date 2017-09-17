@@ -29,7 +29,11 @@ class UserTest extends TestCase
 
     public function testRegisterUserValidation()
     {
-        $response = $this->json('POST', '/v1/users', []);
+        $params = [
+            'email' => 'name',
+            'password' => 1
+        ];
+        $response = $this->json('POST', '/v1/users', $params);
         $response->assertStatus(422)->assertJsonStructure($this->errorResponse(true));
     }
 
@@ -46,7 +50,7 @@ class UserTest extends TestCase
         $anotherUser = factory(User::class)->create();
 
         $response = $this->json('GET', '/v1/users/'.$anotherUser->id);
-        $response->assertStatus(403)->assertJsonStructure(['code', 'message']);
+        $response->assertStatus(403)->assertJsonStructure($this->errorResponse());
     }
 
     public function testGetUser()
@@ -60,9 +64,9 @@ class UserTest extends TestCase
     private function errorResponse($validation = false)
     {
         if ($validation) {
-            return ['code', 'message', 'errors' => [['code', 'field', 'message']]];
+            return ['errors' => [['status', 'code', 'source' => ['parameter'], 'title', 'detail',]]];
         } else {
-            return ['code', 'message', 'description'];
+            return ['errors' => [['status', 'code', 'source' => ['pointer'], 'title', 'detail',]]];
         }
     }
 }

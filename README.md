@@ -31,28 +31,40 @@ More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRob
 
 ## Installing
 
-- Clone the project
+- Create laravel-robust project
 
-```console
-$ composer create-project sfelix-martins/laravel-robust
+```sh
+$ composer create-project sfelix-martins/laravel-robust $YOUR_APP
+```
+
+- Copy .env file and set your environment configs
+
+```sh
+$ cp .env.example .env
 ```
 
 - Install composer packages
 
-```console
+```sh
 $ composer install
+```
+
+- Generate you app key
+
+```sh
+$ php artisan key:generate
 ```
 
 - Migrate database changes
 
-```console
+```sh
 $ php artisan module:migrate
 $ php artisan migrate
 ```
 
 - Install `Laravel Passport` to get credentials
 
-```console
+```sh
 $ php artisan passport:install
 ```
 
@@ -62,7 +74,7 @@ Get the generate credentials to use on API authentication
 
 - Install npm dependencies and start automatic tests
 
-```console
+```sh
 $ npm install
 
 $ npm run tdd
