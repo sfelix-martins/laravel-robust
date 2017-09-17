@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserTest extends TestCase
@@ -13,6 +15,8 @@ class UserTest extends TestCase
 
     public function testRegisterUser()
     {
+        Event::fake();
+
         $user = factory(User::class)->make();
 
         $request = [
@@ -25,6 +29,12 @@ class UserTest extends TestCase
         $response->assertStatus(201)->assertJsonStructure([
             'message', 'data'
         ]);
+
+        $user = $response->original['data'];
+
+        Event::assertDispatched(Registered::class, function ($e) use ($user) {
+            return $e->user->id === $user->id;
+        });
     }
 
     public function testRegisterUserValidation()
