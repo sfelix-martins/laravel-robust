@@ -2183,16 +2183,16 @@
         },
         {
             "name": "sfelix-martins/json-exception-handler",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sfelix-martins/json-exception-handler.git",
-                "reference": "7e94dc4f0cd1a6d4cf56ceddca2632b3dff5a3a5"
+                "reference": "c372c452b483b1e43994b48219e6dc1e1f2fcf64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sfelix-martins/json-exception-handler/zipball/7e94dc4f0cd1a6d4cf56ceddca2632b3dff5a3a5",
-                "reference": "7e94dc4f0cd1a6d4cf56ceddca2632b3dff5a3a5",
+                "url": "https://api.github.com/repos/sfelix-martins/json-exception-handler/zipball/c372c452b483b1e43994b48219e6dc1e1f2fcf64",
+                "reference": "c372c452b483b1e43994b48219e6dc1e1f2fcf64",
                 "shasum": ""
             },
             "require": {
@@ -2230,7 +2230,7 @@
                 "jsonapi",
                 "laravel"
             ],
-            "time": "2017-09-16T23:14:09+00:00"
+            "time": "2017-09-17T18:56:37+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
