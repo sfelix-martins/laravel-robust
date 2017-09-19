@@ -9,12 +9,21 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
 
 - Register Users
 - OAuth 2 Authentication (Default and Facebook)
+- Reset Passwords
+    - You can resets password on **browser** using routes:
+        - GET  : `/password/reset` to show link request form
+        - POST : `/password/email` to send reset link email
+        - GET  : `/password/reset/{token}` to show reset form
+        - POST : `/password/reset` to reset password
+    - Or using the API endpoints
 
 ## Endpoints
 
-- `POST`: /v1/users         - Create users
-- `POST`: /v1/oauth/token   - Default login and Facebook Login
-- `GET` : /v1/users/{id}    - Get one user
+- `POST` : /v1/users          - Create users
+- `POST` : /v1/oauth/token    - Default login and Facebook Login
+- `GET`  : /v1/users/{id}     - Get one user
+- `POST` : /v1/password/email - Sends password reset emails
+- `POST` : /v1/password/reset - Resets Passwords
 
 More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRobustAPI/1.0.0)
 

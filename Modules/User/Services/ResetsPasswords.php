@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\RedirectsUsers;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 trait ResetsPasswords
 {
@@ -51,7 +52,7 @@ trait ResetsPasswords
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         return $response == Password::PASSWORD_RESET
-                    ? $this->sendResetResponse($response)
+                    ? $this->sendResetResponse($request, $response)
                     : $this->sendResetFailedResponse($request, $response);
     }
 
@@ -114,8 +115,15 @@ trait ResetsPasswords
      * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function sendResetResponse($response)
+    protected function sendResetResponse(Request $request, $response)
     {
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => trans($response),
+                'data' => []
+            ]);
+        }
+
         return redirect($this->redirectPath())
                             ->with('status', trans($response));
     }
@@ -129,6 +137,10 @@ trait ResetsPasswords
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {
+        if ($request->expectsJson()) {
+            throw new BadRequestHttpException(trans($response), null, 17);
+        }
+
         return redirect()->back()
                     ->withInput($request->only('email'))
                     ->withErrors(['email' => trans($response)]);
