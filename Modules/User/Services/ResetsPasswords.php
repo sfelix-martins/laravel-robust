@@ -120,7 +120,7 @@ trait ResetsPasswords
         if ($request->expectsJson()) {
             return response()->json([
                 'message' => trans($response),
-                'data' => []
+                'data' => [],
             ]);
         }
 
