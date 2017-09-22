@@ -1,6 +1,6 @@
 # Robust API
 
-<a href="https://travis-ci.org/sfelix-martins/laravel-robust"><img src="https://travis-ci.org/sfelix-martins/laravel-robust.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/sfelix-martins/laravel-robust?branch=master"><img src="https://travis-ci.org/sfelix-martins/laravel-robust.svg?branch=master" alt="Build Status"></a>
 [![StyleCI](https://styleci.io/repos/102787816/shield)](https://styleci.io/repos/102787816)
 
 Laravel Project with many tools preinstalled and pre-set to build **Robust** APIs
