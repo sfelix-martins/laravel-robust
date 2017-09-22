@@ -2,8 +2,8 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
-use Illuminate\Routing\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Http\Controllers\Controller;
+use Modules\User\Services\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
@@ -25,7 +25,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/password-reset';
 
     /**
      * Create a new controller instance.
@@ -34,6 +34,11 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //
+    }
+
+    public function passwordReset()
+    {
+        return view('user::auth.passwords.password_reset');
     }
 }
