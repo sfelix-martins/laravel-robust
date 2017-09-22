@@ -9,6 +9,20 @@ use Modules\User\Repositories\Contracts\UserRepositoryInterface as UserRepositor
 
 class SocialUserResolver implements SocialUserResolverInterface
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Social User Resolver
+    |--------------------------------------------------------------------------
+    |
+    | This class handles the login and registration of social users as well as
+    | their validation and creation. The logic to create users is implemented
+    | on Modules\User\Services\RegistersUsers service using UserRepository to
+    | access model layer.
+    |
+    */
+
+    use RegistersUsers;
+
     protected $users;
 
     public function __construct(UserRepository $users)
@@ -51,14 +65,14 @@ class SocialUserResolver implements SocialUserResolverInterface
             $defaultUser = $this->users->findByEmail($socialUser->getEmail());
 
             if (! $defaultUser) {
-                return (new RegistersUsers($this->users))->register([
+                return $this->register([
                     'name'          => $socialUser->getName(),
                     'email'         => $socialUser->getEmail(),
                     'password'      => sha1($socialUser->getId().date('d-m-Y h:i:s')),
                     'facebook_id'   => $socialUser->getId(),
                 ]);
             } else {
-                $this->users->update($defaultUser->id, [
+                return $this->users->update($defaultUser->id, [
                     'facebook_id' => $socialUser->getId(),
                 ]);
             }

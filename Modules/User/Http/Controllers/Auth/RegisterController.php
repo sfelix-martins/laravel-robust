@@ -21,6 +21,8 @@ class RegisterController extends Controller
     |
     */
 
+    use RegistersUsers;
+
     protected $users;
 
     /**
@@ -33,9 +35,9 @@ class RegisterController extends Controller
         $this->users = $users;
     }
 
-    public function register(Request $request)
+    public function registerUser(Request $request)
     {
-        $user = (new RegistersUsers($this->users))->register($request->all());
+        $user = $this->register($request->all());
 
         return $this->registered($request, $user);
     }

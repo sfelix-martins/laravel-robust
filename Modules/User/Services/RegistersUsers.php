@@ -6,20 +6,13 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
-class RegistersUsers
+trait RegistersUsers
 {
-    private $userRepository;
-
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
     public function register(array $data)
     {
         $this->validator($data)->validate();
 
-        event(new Registered($user = $this->userRepository->create($data)));
+        event(new Registered($user = $this->users->create($data)));
 
         return $user;
     }

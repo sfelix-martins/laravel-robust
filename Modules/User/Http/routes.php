@@ -15,7 +15,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
 
 // Api v1
 Route::group(['middleware' => 'api', 'prefix' => 'v1', 'namespace' => 'Modules\User\Http\Controllers'], function () {
-    Route::post('/users', 'Auth\RegisterController@register');
+    Route::post('/users', 'Auth\RegisterController@registerUser');
     Route::get('/users/{id}', 'UserController@show');
 
     // Password Reset
