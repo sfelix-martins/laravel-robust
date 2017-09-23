@@ -4,7 +4,6 @@ namespace Modules\User\Services;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
-use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
 trait RegistersUsers
 {
