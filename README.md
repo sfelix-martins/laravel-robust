@@ -25,6 +25,11 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
 - `POST` : /v1/password/email - Sends password reset emails
 - `POST` : /v1/password/reset - Resets Passwords
 
+## Events
+
+- `Illuminate\Auth\Events\Registered` when user is registered
+- `Illuminate\Auth\Events\PasswordReset` when resets password
+
 More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRobustAPI/1.0.0)
 
 ## Used Packages

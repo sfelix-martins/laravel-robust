@@ -12,9 +12,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Illuminate\Auth\Events\Registered' => [
-            'Modules\User\Listeners\RequestAccountVerification',
-        ],
+        //
     ];
 
     /**
