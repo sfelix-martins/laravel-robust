@@ -3,6 +3,7 @@
 namespace Modules\User\Repositories;
 
 use Modules\User\Entities\User;
+use Illuminate\Support\Facades\Hash;
 use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
@@ -24,13 +25,35 @@ class UserRepository implements UserRepositoryInterface
         return $this->user->where('email', $email)->first();
     }
 
+    public function findByConfirmationToken($token)
+    {
+        return $this->user->where('confirmation_token', $token)->first();
+    }
+
+    public function confirmEmail()
+    {
+        $this->user->confirmation_token = null;
+        $this->user->confirmed = true;
+        $this->user->save();
+
+        return $this->user;
+    }
+
     public function create(array $data)
     {
+        do {
+            if (!$this->findByConfirmationToken($hash = Hash::make(microtime()))) {
+                $confirmationToken = $hash;
+            }
+        } while (is_null($confirmationToken));
+
         return $this->user->create([
-            'name'          => $data['name'],
-            'email'         => $data['email'],
-            'password'      => $data['password'],
-            'facebook_id'   => isset($data['facebook_id']) ?? null,
+            'name'                  => $data['name'],
+            'email'                 => $data['email'],
+            'password'              => $data['password'],
+            'confirmation_token'    => $confirmationToken,
+            'confirmed'             => isset($data['facebook_id']) ? true : false,
+            'facebook_id'           => isset($data['facebook_id']) ?? null,
         ]);
     }
 

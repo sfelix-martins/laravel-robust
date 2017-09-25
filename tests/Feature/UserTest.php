@@ -5,8 +5,10 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Notification;
+use Modules\User\Notifications\UnconfirmedEmail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserTest extends TestCase
@@ -16,6 +18,7 @@ class UserTest extends TestCase
     public function testRegisterUser()
     {
         Event::fake();
+        Notification::fake();
 
         $user = factory(User::class)->make();
 
@@ -35,6 +38,8 @@ class UserTest extends TestCase
         Event::assertDispatched(Registered::class, function ($e) use ($user) {
             return $e->user->id === $user->id;
         });
+
+        Notification::assertSentTo([$user], UnconfirmedEmail::class);
     }
 
     public function testRegisterUserValidation()
