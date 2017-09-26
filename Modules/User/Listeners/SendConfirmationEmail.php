@@ -25,7 +25,7 @@ class SendConfirmationEmail
      */
     public function handle(Registered $event)
     {
-        if (!$event->user->confirmed) {
+        if (! $event->user->confirmed) {
             $event->user->notify(new UnconfirmedEmail);
         }
     }
