@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Illuminate\Auth\Events\Registered' => [
-            'Modules\User\Listeners\SendConfirmationEmail'
-        ]
+            'Modules\User\Listeners\SendConfirmationEmail',
+        ],
     ];
 
     /**

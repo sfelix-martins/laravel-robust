@@ -13,6 +13,13 @@ trait ConfirmEmails
             throw new NotFoundHttpException('Token not found.', null, 18);
         }
 
-        dd($this->users->confirmEmail($user));
+        $confirmed = $this->users->confirmEmail($user);
+
+        if ($confirmed) {
+            return response()->json([
+                'message' => 'Email confirmed ',
+                'data' => []
+            ]);
+        }
     }
 }

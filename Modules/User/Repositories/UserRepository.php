@@ -30,19 +30,18 @@ class UserRepository implements UserRepositoryInterface
         return $this->user->where('confirmation_token', $token)->first();
     }
 
-    public function confirmEmail()
+    public function confirmEmail($user)
     {
-        $this->user->confirmation_token = null;
-        $this->user->confirmed = true;
-        $this->user->save();
+        $user->confirmation_token = null;
+        $user->confirmed = true;
 
-        return $this->user;
+        return $user->save();
     }
 
     public function create(array $data)
     {
         do {
-            if (!$this->findByConfirmationToken($hash = Hash::make(microtime()))) {
+            if (!$this->findByConfirmationToken($hash = md5(uniqid(rand(), true)))) {
                 $confirmationToken = $hash;
             }
         } while (is_null($confirmationToken));
@@ -50,7 +49,7 @@ class UserRepository implements UserRepositoryInterface
         return $this->user->create([
             'name'                  => $data['name'],
             'email'                 => $data['email'],
-            'password'              => $data['password'],
+            'password'              => bcrypt($data['password']),
             'confirmation_token'    => $confirmationToken,
             'confirmed'             => isset($data['facebook_id']) ? true : false,
             'facebook_id'           => isset($data['facebook_id']) ?? null,
