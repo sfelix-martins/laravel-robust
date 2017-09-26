@@ -86,6 +86,14 @@ $ php artisan passport:install
 
 Get the generate credentials to use on API authentication
 
+- You need start queue to send confirmation email correctly
+
+```sh
+$ php artisan queue:work
+```
+
+Or configure [Supervisor](https://laravel.com/docs/5.5/queues#supervisor-configuration) to make this
+
 ## Testing
 
 - Install npm dependencies and start automatic tests
