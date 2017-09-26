@@ -10,7 +10,7 @@ trait ConfirmEmails
     public function verify(Request $request, $token)
     {
         $user = $this->users->findByConfirmationToken($token);
-        if (!$user) {
+        if (! $user) {
             if ($request->expectsJson()) {
                 throw new NotFoundHttpException('Token not found.', null, 18);
             }
@@ -26,7 +26,7 @@ trait ConfirmEmails
             if ($request->expectsJson()) {
                 return response()->json([
                     'message' => 'Email confirmed ',
-                    'data' => []
+                    'data' => [],
                 ]);
             }
 

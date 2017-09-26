@@ -3,7 +3,6 @@
 namespace Modules\User\Repositories;
 
 use Modules\User\Entities\User;
-use Illuminate\Support\Facades\Hash;
 use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
@@ -41,7 +40,7 @@ class UserRepository implements UserRepositoryInterface
     public function create(array $data)
     {
         do {
-            if (!$this->findByConfirmationToken($hash = md5(uniqid(rand(), true)))) {
+            if (! $this->findByConfirmationToken($hash = md5(uniqid(rand(), true)))) {
                 $confirmationToken = $hash;
             }
         } while (is_null($confirmationToken));
