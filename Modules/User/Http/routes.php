@@ -11,6 +11,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
     Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
     Route::get('/password-reset', 'Auth\ResetPasswordController@passwordReset');
+    Route::get('/account/verify/{token}', 'Auth\ConfirmEmailController@verify');
 });
 
 // Api v1

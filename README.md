@@ -16,14 +16,16 @@ Laravel Project with many tools preinstalled and pre-set to build **Robust** API
         - GET  : `/password/reset/{token}` to show reset form
         - POST : `/password/reset` to reset password
     - Or using the API endpoints
+- Confirm Account
 
 ## Endpoints
 
-- `POST` : /v1/users          - Create users
-- `POST` : /v1/oauth/token    - Default login and Facebook Login
-- `GET`  : /v1/users/{id}     - Get one user
-- `POST` : /v1/password/email - Sends password reset emails
-- `POST` : /v1/password/reset - Resets Passwords
+- `POST`: /v1/users                     - Create users
+- `POST`: /v1/oauth/token               - Default login and Facebook Login
+- `GET` : /v1/users/{id}                - Get one user
+- `POST`: /v1/password/email            - Sends password reset emails
+- `POST`: /v1/password/reset            - Resets Passwords
+- `GET` : /v1/account/verify/{token}    - Confirm email
 
 ## Events
 
@@ -83,6 +85,14 @@ $ php artisan passport:install
 ```
 
 Get the generate credentials to use on API authentication
+
+- You need start queue to send confirmation email correctly
+
+```sh
+$ php artisan queue:work
+```
+
+Or configure [Supervisor](https://laravel.com/docs/5.5/queues#supervisor-configuration) to make this
 
 ## Testing
 

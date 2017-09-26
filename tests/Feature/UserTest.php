@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserTest extends TestCase
