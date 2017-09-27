@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -28,11 +29,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
-
-        // Passport::tokensExpireIn(Carbon::now()->addMinutes(1));
-
-        // Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(2));
+        Route::group(['prefix' => 'v1', 'middleware' => 'api'], function () {
+            Passport::routes();
+        });
 
         Gate::define('users.view', function (User $user, $id) {
             return $user->id == $id;
