@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
 use Laravel\Passport\Passport;
 use Modules\User\Entities\User;
 use Illuminate\Support\Facades\Gate;
