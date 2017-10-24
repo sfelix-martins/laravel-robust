@@ -8,6 +8,7 @@ use Modules\User\Entities\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class UserTest extends TestCase
 {
@@ -49,7 +50,7 @@ class UserTest extends TestCase
 
     public function testGetUserWithNotExistentUser()
     {
-        $response = $this->json('GET', '/v1/users/1');
+        $response = $this->json('GET', '/v1/users/0');
         $response->assertStatus(404)->assertJsonStructure($this->errorResponse());
     }
 

@@ -35,6 +35,8 @@ return [
             ],
         ],
         'not_found_http' => 15,
+        'authentication' => 16,
+        'passport' => 17,
     ],
 
     /*

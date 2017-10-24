@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Modules\User\Entities\User;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ResetsPasswordTest extends TestCase

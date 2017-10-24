@@ -12,12 +12,12 @@ trait ConfirmEmails
         $user = $this->users->findByConfirmationToken($token);
         if (! $user) {
             if ($request->expectsJson()) {
-                throw new NotFoundHttpException('Token not found.', null, 18);
+                throw new NotFoundHttpException(__('user::messages.not_found', ['attribute' => 'Token']), null, 18);
             }
 
             return view('user::auth.email.confirmed')
                 ->withInput($token)
-                ->withErrors(['token' => 'Token not found.']);
+                ->withErrors(['token' => __('user::messages.not_found', ['entitie' => 'Token'])]);
         }
 
         $confirmed = $this->users->confirmEmail($user);
@@ -25,7 +25,7 @@ trait ConfirmEmails
         if ($confirmed) {
             if ($request->expectsJson()) {
                 return response()->json([
-                    'message' => 'Email confirmed ',
+                    'message' => __('user::messages.confirmed', ['attribute' => 'Email']),
                     'data' => [],
                 ]);
             }

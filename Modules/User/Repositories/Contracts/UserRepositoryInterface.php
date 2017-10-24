@@ -2,6 +2,8 @@
 
 namespace Modules\User\Repositories\Contracts;
 
+use Modules\User\Entities\User;
+
 interface UserRepositoryInterface
 {
     public function findByFacebookId($facebookId);
@@ -11,4 +13,6 @@ interface UserRepositoryInterface
     public function create(array $data);
 
     public function update(int $id, array $data);
+
+    public function confirmEmail(User $user);
 }

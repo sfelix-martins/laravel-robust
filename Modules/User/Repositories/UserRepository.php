@@ -29,7 +29,7 @@ class UserRepository implements UserRepositoryInterface
         return $this->user->where('confirmation_token', $token)->first();
     }
 
-    public function confirmEmail($user)
+    public function confirmEmail(User $user)
     {
         $user->confirmation_token = null;
         $user->confirmed = true;

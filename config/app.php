@@ -180,6 +180,7 @@ return [
          * Modules Service Providers...
          */
         Modules\User\Providers\EventServiceProvider::class,
+        Modules\Admin\Providers\EventServiceProvider::class,
     ],
 
     /*

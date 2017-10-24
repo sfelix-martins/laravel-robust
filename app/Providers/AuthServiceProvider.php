@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Route::group(['prefix' => 'v1', 'middleware' => 'api'], function () {
+        Route::group(['prefix' => 'v1', 'middleware' => ['api', 'json-passport']], function () {
             Passport::routes();
         });
 

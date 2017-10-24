@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\User\Http\Controllers\Auth;
+namespace Modules\Admin\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Modules\User\Http\Requests\StoreUser;
-use Modules\User\Services\RegistersUsers;
-use Modules\User\Repositories\Contracts\UserRepositoryInterface as UserRepository;
+use Modules\Admin\Services\RegistersAdmins;
+use Modules\Admin\Repositories\Contracts\AdminRepositoryInterface as AdminRepository;
 
 class RegisterController extends Controller
 {
@@ -17,30 +16,30 @@ class RegisterController extends Controller
     |
     | This controller handles the registration of new users as well as their
     | validation and creation. The logic to create users is implemented on
-    | Modules\User\Services\RegistersUsers service using UserRepository to
+    | Modules\Admin\Services\RegistersAdmins service using AdminRepository to
     | access model layer
     |
     */
 
-    use RegistersUsers;
+    use RegistersAdmins;
 
-    protected $users;
+    protected $adminRepository;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserRepository $users)
+    public function __construct(AdminRepository $adminRepository)
     {
-        $this->users = $users;
+        $this->adminRepository = $adminRepository;
     }
 
-    public function registerUser(Request $request)
+    public function registerAdmin(Request $request)
     {
-        $user = $this->register($request->all());
+        $admin = $this->register($request->all());
 
-        return $this->registered($request, $user);
+        return $this->registered($request, $admin);
     }
 
     /**
@@ -50,12 +49,12 @@ class RegisterController extends Controller
      * @param  mixed  $user
      * @return mixed
      */
-    protected function registered(Request $request, $user)
+    protected function registered(Request $request, $admin)
     {
         if ($request->expectsJson()) {
             return response()->json([
-                'message' => 'User created with success.',
-                'data' => $user,
+                'message' => 'Admin created with success.',
+                'data' => $admin,
             ], 201);
         }
     }
