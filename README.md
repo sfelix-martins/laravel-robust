@@ -53,6 +53,11 @@ More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRob
 ```sh
 $ composer create-project sfelix-martins/laravel-robust $YOUR_APP
 ```
+- Enter in the project folder:
+
+```sh
+$ cd $YOUR_APP
+```
 
 - Copy .env file and set your environment configs
 
