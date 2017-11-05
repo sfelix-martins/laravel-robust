@@ -53,10 +53,17 @@ More details on [Docs](https://app.swaggerhub.com/apis/sfelix-martins/LaravelRob
 ```sh
 $ composer create-project sfelix-martins/laravel-robust $YOUR_APP
 ```
+
 - Enter in the project folder:
 
 ```sh
 $ cd $YOUR_APP
+```
+
+- Use the stable version. Go to [releases](https://github.com/sfelix-martins/laravel-robust/releases) and checkout on latest version. For example:
+
+```sh
+$ git checkout v1.1.0
 ```
 
 - Copy .env file and set your environment configs
